@@ -15,6 +15,7 @@ user2 = User.create(email: 'test2@mail.com', password: '123456', first_name:"Ivo
 user3 = User.create(email: 'test3@mail.com', password: '123456', first_name:"Amaury", last_name:"Gilliot", sport:"Football", position:"Midfield", gender:"Male", footedness:"Right", weight:69, height:172)
 
 puts 'Creating 20 fake users...'
+
 20.times do
   user = User.new(
     first_name: Faker::Name::first_name,
@@ -28,8 +29,13 @@ puts 'Creating 20 fake users...'
     weight: rand(50..100),
     height: rand(120..200),
     description: Faker::Quote.yoda,
-    follower_relationships
   )
   user.save!
 end
+
+User.take(5).each do |user|
+  p user
+  5.times { |_| user.follower_relationships.create(followed_user_id: User.where.not(id: user.id).sample) }
+end
+
 puts 'Finished!'
