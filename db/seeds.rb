@@ -10,11 +10,12 @@ require 'faker'
 
 User.destroy_all
 
-user1 = User.create(email: 'test@mail.com', password: '123123')
-user2 = User.create(email: 'test2@mail.com', password: '123456')
-
+user1 = User.create(email: 'test@mail.com', password: '123456', first_name:"Michel", last_name:"Caluwaerts")
+user2 = User.create(email: 'test2@mail.com', password: '123456', first_name:"Ivo", last_name:"Rasovic")
+user3 = User.create(email: 'test3@mail.com', password: '123456', first_name:"Amaury", last_name:"Gilliot", sport:"Football", position:"Midfield", gender:"Male", footedness:"Right", weight:69, height:172)
 
 puts 'Creating 20 fake users...'
+
 20.times do
   user = User.new(
     first_name: Faker::Name::first_name,
@@ -31,4 +32,10 @@ puts 'Creating 20 fake users...'
   )
   user.save!
 end
+
+User.take(5).each do |user|
+  p user
+  5.times { |_| user.follower_relationships.create(followed_user_id: User.where.not(id: user.id).sample) }
+end
+
 puts 'Finished!'
