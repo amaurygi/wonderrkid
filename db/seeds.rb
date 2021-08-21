@@ -10,9 +10,9 @@ require 'faker'
 
 User.destroy_all
 
-user1 = User.create(email: 'test@mail.com', password: '123123')
-user2 = User.create(email: 'test2@mail.com', password: '123456')
-
+user1 = User.create(email: 'test@mail.com', password: '123456', first_name:"Michel", last_name:"Caluwaerts")
+user2 = User.create(email: 'test2@mail.com', password: '123456', first_name:"Ivo", last_name:"Rasovic")
+user3 = User.create(email: 'test3@mail.com', password: '123456', first_name:"Amaury", last_name:"Gilliot", sport:"Football", position:"Midfield", gender:"Male", footedness:"Right", weight:69, height:172)
 
 puts 'Creating 20 fake users...'
 20.times do
@@ -28,6 +28,7 @@ puts 'Creating 20 fake users...'
     weight: rand(50..100),
     height: rand(120..200),
     description: Faker::Quote.yoda,
+    follower_relationships
   )
   user.save!
 end
