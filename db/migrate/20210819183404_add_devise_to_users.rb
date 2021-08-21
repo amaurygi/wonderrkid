@@ -35,13 +35,14 @@ class AddDeviseToUsers < ActiveRecord::Migration[6.0]
       t.string :first_name
       t.string :last_name
       t.boolean :admin
-      t.boolean :role
+      t.string :role
       t.string :sport
       t.string :position
-      t.boolean :gender
-      t.boolean :footedness
+      t.string :gender
+      t.string :footedness
       t.integer :height
       t.integer :weight
+      t.text :description
 
       # Uncomment below if timestamps were not included in your original model.
       # t.timestamps null: false

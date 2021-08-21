@@ -31,13 +31,14 @@ ActiveRecord::Schema.define(version: 2021_08_19_192134) do
     t.string "first_name"
     t.string "last_name"
     t.boolean "admin"
-    t.boolean "role"
+    t.string "role"
     t.string "sport"
     t.string "position"
-    t.boolean "gender"
-    t.boolean "footedness"
+    t.string "gender"
+    t.string "footedness"
     t.integer "height"
     t.integer "weight"
+    t.text "description"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
