@@ -34,8 +34,9 @@ puts 'Creating 20 fake users...'
 end
 
 User.take(5).each do |user|
-  p user
-  5.times { |_| user.follower_relationships.create(followed_user_id: User.where.not(id: user.id).sample) }
+  potential_followed_users = User.where.not(id: user.id).take(5)
+  potential_followed_users.each do |potential_user|
+    user.follower_relationships.create(followed_user: potential_user)
+  end
 end
-
 puts 'Finished!'
