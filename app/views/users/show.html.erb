@@ -1,0 +1,19 @@
+<h1> User </h1>
+  <p><%= @user.firt_name %></p>
+  <p><%= @user.last_name %></p>
+  <p><%= @user.sport %> €</p>
+  <p><%= @user.position %> €</p>
+  <p><%= @user.gender %> €</p>
+  <p><%= @user.footedness %> €</p>
+  <p><%= @user.weight %> €</p>
+  <p><%= @user.height %> €</p>
+  <p><%= @user.description %></p>
+
+    <% if @user.id == current_user.id %>
+    <%= link_to 'Edit', edit_user_path(@user) %>
+    <% end %>
+
+    <%= link_to 'Go back', users_path %>
+    <% if @user.id == current_user.id %>
+    <%= link_to 'Delete', user_path(@user), method: :delete, data: { confirm: 'Are you sure you want to delete your info?' } %>
+    <% end %>

@@ -1,0 +1,21 @@
+<h1> Search our users </h1>
+
+  <% @users.each do |user| %>
+    <h2><%= link_to user.first_name, user_path(user) %></h2>
+      <p><%= user.firt_name %></p>
+      <p><%= user.last_name %></p>
+      <p><%= user.sport %> €</p>
+      <p><%= user.position %> €</p>
+      <p><%= user.gender %> €</p>
+      <p><%= user.footedness %> €</p>
+      <p><%= user.weight %> €</p>
+      <p><%= user.height %> €</p>
+      <p><%= user.description %></p>
+        <p><% if @user.id == current_user.id %>
+            <a><%= link_to 'Edit', edit_user_path(user) %></a>
+          <% end %>
+          <% if @user.id == current_user.id %>
+            <a><%= link_to "delete", user_path(user), method: :delete %></a>
+          <% end %>
+        </p>
+  <% end %>
