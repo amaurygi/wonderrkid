@@ -11,9 +11,12 @@
   <p><%= @user.height %></p>
   <p><%= @user.description %></p>
 
+<%= cl_image_tag(@user.avatar.key, width: 200, crop: :scale) %>
+
     <% if @user.id == current_user.id %>
     <%= link_to 'Edit', edit_user_path(@user) %>
     <% end %>
+
 
     <%= link_to 'Go back', users_path %>
     <% if @user.id == current_user.id %>
