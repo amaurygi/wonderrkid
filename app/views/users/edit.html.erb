@@ -4,6 +4,8 @@
       <div class="bg-white rounded p-3 shadow">
         <h3>Edit your info</h3>
         <%= simple_form_for @user do |f| %>
+          <%= f.label :avatar %>
+          <%= f.file_field :avatar, as: :file %>
           <%= f.input :first_name, placeholder: 'Name of the user' %>
           <%= f.input :last_name, placeholder: 'Last Name of the user' %>
           <%= f.input :sport, placeholder: 'Sport of the user' %>
