@@ -1,12 +1,14 @@
 <h1> User </h1>
-  <p><%= @user.firt_name %></p>
+  <p><%= @user.id %></p>
+  <p><%= @user.email %></p>
+  <p><%= @user.first_name %></p>
   <p><%= @user.last_name %></p>
-  <p><%= @user.sport %> €</p>
-  <p><%= @user.position %> €</p>
-  <p><%= @user.gender %> €</p>
-  <p><%= @user.footedness %> €</p>
-  <p><%= @user.weight %> €</p>
-  <p><%= @user.height %> €</p>
+  <p><%= @user.sport %></p>
+  <p><%= @user.position %></p>
+  <p><%= @user.gender %></p>
+  <p><%= @user.footedness %></p>
+  <p><%= @user.weight %></p>
+  <p><%= @user.height %></p>
   <p><%= @user.description %></p>
 
     <% if @user.id == current_user.id %>

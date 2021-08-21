@@ -6,9 +6,30 @@ class UsersController < ApplicationController
   end
 
   def show
+
+  end
+
+  def new
     @user = User.new
   end
 
+  def edit
+  end
+
+  def update
+    if @user.id == current_user.id
+      @user.update(user_params)
+      redirect_to user_path(@user)
+    else
+      flash[:alert] = "You cannot edit other profiles!"
+      render :action => :edit
+    end
+  end
+
+  def destroy
+    @user.destroy
+    redirect_to users_path
+  end
 
 private
 
@@ -17,7 +38,7 @@ private
   end
 
   def user_params
-    params.require(:user).permit(:first_name,:last_name,:sport,:position,:gender,:footedness,:weight,:height,:description photos: [])
+    params.require(:user).permit(:first_name,:last_name,:sport,:position,:gender,:footedness,:weight,:height, :description)
   end
 
 end

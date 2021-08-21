@@ -1,0 +1,21 @@
+<div class="container py-5">
+  <div class="row">
+    <div class="col-12 col-md-6 offset-lg-3">
+      <div class="bg-white rounded p-3 shadow">
+        <h3>Edit your info</h3>
+        <%= simple_form_for @user do |f| %>
+          <%= f.input :first_name, placeholder: 'Name of the user' %>
+          <%= f.input :last_name, placeholder: 'Last Name of the user' %>
+          <%= f.input :sport, placeholder: 'Sport of the user' %>
+          <%= f.input :position, placeholder: 'Position of the user' %>
+          <%= f.input :gender, placeholder: 'Gender of the user' %>
+          <%= f.input :footedness, placeholder: 'Footedness of the user' %>
+          <%= f.input :weight, placeholder: 'Weight of the user in kg' %>
+          <%= f.input :height, placeholder: 'Height of the user in cm' %>
+          <%= f.input :description, placeholder: 'Describe how cozy the user is <3' %>
+          <%= f.submit class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
