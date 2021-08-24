@@ -1,4 +1,8 @@
-<h1> User </h1>
+<div class="card-white">
+  <div class="justify-content" >
+      <h1> User </h1>
+      <%= cl_image_tag(@user.avatar.key, height: 100, width: 100, crop: "fill", radius: "max", gravity: "faces") %>
+  </div>
   <p><%= @user.id %></p>
   <p><%= @user.email %></p>
   <p><%= @user.first_name %></p>
@@ -11,10 +15,11 @@
   <p><%= @user.height %></p>
   <p><%= @user.description %></p>
 
-<%= cl_image_tag(@user.avatar.key, width: 200, crop: :scale) %>
+
+  
 
     <% if @user.id == current_user.id %>
-    <%= link_to 'Edit', edit_user_path(@user) %>
+    <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-secondary" %>
     <% end %>
 
 
@@ -22,3 +27,4 @@
     <% if @user.id == current_user.id %>
     <%= link_to 'Delete', user_path(@user), method: :delete, data: { confirm: 'Are you sure you want to delete your info?' } %>
     <% end %>
+</div>
