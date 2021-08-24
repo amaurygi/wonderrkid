@@ -11,7 +11,9 @@
   <p><%= @user.height %></p>
   <p><%= @user.description %></p>
 
-<%= cl_image_tag(@user.avatar.key, width: 200, crop: :scale) %>
+    <% if @user.avatar.attached? %>
+    <%= cl_image_tag(@user.avatar.key, width: 200, crop: :scale) %>
+    <% end %>
 
     <% if @user.id == current_user.id %>
     <%= link_to 'Edit', edit_user_path(@user) %>
