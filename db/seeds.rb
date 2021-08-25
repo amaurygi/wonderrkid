@@ -7,35 +7,84 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'faker'
+require 'open-uri'
 
 User.destroy_all
 
-user1 = User.create(email: 'test@mail.com', password: '123456', first_name:"Michel", last_name:"Caluwaerts")
-user2 = User.create(email: 'test2@mail.com', password: '123456', first_name:"Ivo", last_name:"Rasovic")
-user3 = User.create(email: 'test3@mail.com', password: '123456', first_name:"Amaury", last_name:"Gilliot", sport:"Football", position:"Midfield", gender:"Male", footedness:"Right", weight:69, height:172)
+puts 'Creating fake users...'
 
-puts 'Creating 20 fake users...'
+pictures = [
+  'https://www.foottheball.com/wp-content/uploads/2019/10/Teens-Who-Participate-In-Football.jpg',
+  'https://previews.123rf.com/images/ammentorp/ammentorp1709/ammentorp170900520/86819500-teenagers-playing-football-on-field-soccer-team-practicing-on-football-ground-.jpg',
+  'https://yourteenmag.com/wp-content/uploads/2020/07/return-to-field-1-1135x540.jpg',
+  'https://c8.alamy.com/comp/TWH5RF/teenagers-playing-informal-soccer-football-TWH5RF.jpg',
+  'https://www.esquireme.com/public/images/2017/04/06/8758160_orig.jpg',
+  'https://www.abcmoney.co.uk/wp-content/uploads/2017/11/football.jpg',
+  'https://welshbattlefields.org.uk/wp-content/uploads/2020/06/px-teens-sports-1568x1045.jpeg'
+]
 
-20.times do
-  user = User.new(
-    first_name: Faker::Name::first_name,
-    last_name: Faker::Name::name,
-    email: Faker::Internet::email,
-    password: "123456",
-    sport: "Football",
-    position: Faker::Sports::Football.position,
-    gender: ['Male', 'Female'].sample,
-    footedness: ['Left', 'Right'].sample,
-    weight: rand(50..100),
-    height: rand(120..200),
-    description: Faker::Quote.yoda,
-  )
-  user.save!
+file = URI.open('https://www.usyouthsoccer.org/assets/1/6/f-17-65-6653354_Andrea1.jpg')
+user = User.new(
+  email: 'michel@mail.com', 
+  password: '123456', 
+  first_name:"Michel", 
+  last_name:"Caluwaerts",
+  sport: "Football",
+  position: Faker::Sports::Football.position,
+  gender: ['Male', 'Female'].sample,
+  footedness: ['Left', 'Right'].sample,
+  weight: rand(50..100),
+  height: rand(120..200),
+  description: Faker::Quote.yoda,
+)
+user.avatar.attach(io: file, filename: 'michel.jpg', content_type: 'image/jpg')
+user.save!
+
+file = URI.open('https://www.active.com/Assets/active-family/football/health-benefits.jpg')
+user = User.new(
+  email: 'amaury@mail.com', 
+  password: '123456', 
+  first_name:"Amaury", 
+  last_name:"Gilliot",
+  sport: "Football",
+  position: Faker::Sports::Football.position,
+  gender: ['Male', 'Female'].sample,
+  footedness: ['Left', 'Right'].sample,
+  weight: rand(50..100),
+  height: rand(120..200),
+  description: Faker::Quote.yoda,
+)
+user.avatar.attach(io: file, filename: 'amaury.jpg', content_type: 'image/jpg')
+user.save!
+
+file = URI.open('https://thumbs.dreamstime.com/z/action-sport-picture-group-kids-playing-soccer-football-exercise-community-rural-area-field-under-sunset-ligth-134991448.jpg')
+user = User.new(
+  email: 'ivo@mail.com', 
+  password: '123456', 
+  first_name:"Ivo", 
+  last_name:"Rasovic",
+  sport: "Football",
+  position: Faker::Sports::Football.position,
+  gender: ['Male', 'Female'].sample,
+  footedness: ['Left', 'Right'].sample,
+  weight: rand(50..100),
+  height: rand(120..200),
+  description: Faker::Quote.yoda,
+)
+user.avatar.attach(io: file, filename: 'ivo.jpg', content_type: 'image/jpg')
+user.save!
+
+User.take(3).each do |user|
+  pictures.each do |picture|
+    file = URI.open(picture)
+    user.photos.attach(io: file, filename: "photo #{pictures[10..13]}", content_type: 'image/jpg')
+    user.save!
+  end
 end
 
-User.take(5).each do |user|
+User.take(2).each do |user|
   p user
-  5.times { |_| user.follower_relationships.create(followed_user_id: User.where.not(id: user.id).sample) }
+  2.times { |_| user.follower_relationships.create(followed_user_id: User.where.not(id: user.id).sample) }
 end
 
 puts 'Finished!'

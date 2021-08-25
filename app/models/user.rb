@@ -10,5 +10,6 @@ class User < ApplicationRecord
   has_many :following_users, through: :following_relationships, source: :user
 
   has_one_attached :avatar
+  has_many_attached :photos
   
 end
