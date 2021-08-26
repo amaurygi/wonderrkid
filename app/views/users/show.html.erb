@@ -1,7 +1,9 @@
 <div class="card-white">
   <div class="justify-content" >
       <h1> User </h1>
-      <%= cl_image_tag(@user.avatar.key, height: 100, width: 100, crop: "fill", radius: "max", gravity: "faces") %>
+      <% if @user.avatar.attached? %>
+        <%= cl_image_tag(@user.avatar.key, height: 100, width: 100, crop: "fill", radius: "max", gravity: "faces") %>
+      <% end %>
   </div>
   <p><%= @user.id %></p>
   <p><%= @user.email %></p>
@@ -14,9 +16,6 @@
   <p><%= @user.weight %></p>
   <p><%= @user.height %></p>
   <p><%= @user.description %></p>
-
-
-  
 
     <% if @user.id == current_user.id %>
     <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-secondary" %>

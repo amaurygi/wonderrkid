@@ -86,5 +86,4 @@ User.take(2).each do |user|
   p user
   2.times { |_| user.follower_relationships.create(followed_user_id: User.where.not(id: user.id).sample) }
 end
-
 puts 'Finished!'
