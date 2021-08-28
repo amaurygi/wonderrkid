@@ -1,4 +1,4 @@
-<h1> Search our users </h1>
+<h1> Search our athletes </h1>
 
 <%= form_tag users_path, method: :get do %>
   <div class="search-form-control form-group">
@@ -14,22 +14,30 @@
 
 <div class="cards">
   <% @users.each do |user| %>
-    <h2><%= link_to user.first_name, user_path(user) %></h2>
-      <p><%= user.first_name %></p>
-      <p><%= user.last_name %></p>
-      <p><%= user.sport %> </p>
-      <p><%= user.position %> </p>
-      <p><%= user.gender %> </p>
-      <p><%= user.footedness %> </p>
-      <p><%= user.weight %> </p>
-      <p><%= user.height %> </p>
-      <p><%= user.description %></p>
-        <p><% if user.id == current_user.id %>
-            <a><%= link_to 'Edit', edit_user_path(user) %></a>
-          <% end %>
-          <% if user.id == current_user.id %>
-            <a><%= link_to "delete", user_path(user), method: :delete, data: { confirm: 'Are you sure you want to delete this property?' } %></a>
-          <% end %>
-        </p>
-    <% end %>
-  </div>
+    <div class="card-product">
+      <%= cl_image_tag user.photos.first&.key %>
+        <div class="card-product-infos">
+          <h2>
+            <%= link_to user.first_name, user_path(user)%>
+            <%= link_to user.last_name, user_path(user)%>
+              <% if user.gender == "Male" %>
+                <i class="fas fa-mars"></i>
+              <% else %>
+                <i class="fas fa-venus"></i>
+              <% end %>
+          </h2>
+            <p><%= user.sport %> - <%= user.position %> - <%= user.footedness %>-footed</p>
+            <p><%= user.weight %>kg - <%= user.height %>cm</p>
+            <div class="buttons">
+              <p><% if user == current_user %>
+                  <a class="btn-show"><%= link_to 'Edit', edit_user_path(user), class: 'btn btn-primary' %></a>
+                <% end %>
+                <% if user == current_user %>
+                  <a class="btn-show"><%= link_to "delete", user_path(user), method: :delete, class: 'btn btn-primary' %></a>
+                <% end %>
+              </p>
+            </div>
+        </div>
+    </div>
+  <% end %>
+</div>
