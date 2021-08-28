@@ -11,7 +11,26 @@
   </div>
 <% end %>
 
+ <div class="search-form-control form-group">
+<%= simple_form_for users_path, method: :get, wrapper: :inline_form, html: {class: "form-inline"} do |f| %>
+    <%= f.input :sport, :collection => ['Football', 'Basketball', 'Handball', 'Volleyball'], input_html: { class: "mr-2" }, prompt: "Sport" %>
+    <%= f.input :position, as: :string, input_html: { class: "position-field mr-2" }, placeholder: "position" %>
+    <%= f.input :gender, :collection => ['female', 'male'], input_html: { class: "mr-2" }, prompt: "Gender" %>
+    <%= f.input :footedness, :collection => ['Left', 'Right'], input_html: { class: "mr-2" }, prompt: "Footedness" %>
+    <%= f.input :weight, as: :integer, input_html: { class: "weight-field mr-2" }, placeholder: "weight" %>
+    <%= f.input :height, as: :integer, input_html: { class: "height-field mr-2" }, placeholder: "height" %>
+
+
+    <%= f.range_field :w1, :min=>0, :max=>200, :class=>"slide", :id=>"slider1"%>
+    <%= f.submit "Apply filters", class: "btn btn-primary" %>
+ <% end %>
+</div>
+
+
+<div class="cards">
+
 <div class="container">
+
   <% @users.each do |user| %>
     <div class="card">
       <div class="card-body">
@@ -32,7 +51,7 @@
         </p>
         <div class="card-header">
           <%= cl_image_tag user.photos.first&.key %>
-        </div>  
+        </div>
         <div class="user-info">
         <br>
             <p>

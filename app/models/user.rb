@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  include Filterable
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -12,5 +13,12 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
   has_many_attached :photos
-  
+
+  scope :filter_by_sport, -> (sport) { where sport: sport }
+  scope :filter_by_position, -> (position) { where position: position }
+  scope :filter_by_gender, -> (gender) { where gender: gender }
+  scope :filter_by_footedness, -> (footedness) { where footedness: footedness }
+  scope :filter_by_height, -> (height) { where height: height }
+  scope :filter_by_weight, -> (weight) { where weight: weight }
+
 end
