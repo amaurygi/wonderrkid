@@ -10,6 +10,7 @@ require 'faker'
 require 'open-uri'
 
 User.destroy_all
+Chatroom.destroy_all
 
 puts 'Creating fake users...'
 
@@ -82,8 +83,15 @@ User.take(3).each do |user|
   end
 end
 
+=begin
 User.take(2).each do |user|
   p user
   2.times { |_| user.follower_relationships.create(followed_user_id: User.where.not(id: user.id).sample) }
 end
+=end
+connection = FollowerRelationship.new(user: User.first, followed_user: User.last)
+chatroom = Chatroom.create
+connection.chatroom = chatroom
+connection.save
+
 puts 'Finished!'
