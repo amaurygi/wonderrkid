@@ -1,29 +1,38 @@
-<div class="card-white">
-  <div class="justify-content" >
-      <h1> User </h1>
-      <% if @user.avatar.attached? %>
-        <%= cl_image_tag(@user.avatar.key, height: 100, width: 100, crop: "fill", radius: "max", gravity: "faces") %>
+<div class="main-container">
+  <div class="photo-cards">
+    <% @user.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill, class: "photo-card" %>
+    <% end %>
+  </div>
+  <div class="card-white" id="profile-data">
+    <div class="d-flex justify-content-between align-items-center" >
+        <h1> User </h1>
+        <% if @user.avatar.attached? %>
+          <%= cl_image_tag(@user.avatar.key, height: 100, width: 100, crop: "fill", gravity: "faces", class: "avatar-profile") %>
+        <% end %>
+    </div>
+    <p><%= @user.id %></p>
+    <p><%= @user.email %></p>
+    <p><%= @user.first_name %></p>
+    <p><%= @user.last_name %></p>
+    <p><%= @user.sport %></p>
+    <p><%= @user.position %></p>
+    <p><%= @user.gender %></p>
+    <p><%= @user.footedness %></p>
+    <p><%= @user.weight %></p>
+    <p><%= @user.height %></p>
+    <p><%= @user.description %></p>
+
+      <% if @user.id == current_user.id %>
+      <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-secondary" %>
+      <% end %>
+
+
+      <%= link_to 'Go back', users_path %>
+      <% if @user.id == current_user.id %>
+      <%= link_to 'Delete', user_path(@user), method: :delete, data: { confirm: 'Are you sure you want to delete your info?' } %>
       <% end %>
   </div>
-  <p><%= @user.id %></p>
-  <p><%= @user.email %></p>
-  <p><%= @user.first_name %></p>
-  <p><%= @user.last_name %></p>
-  <p><%= @user.sport %></p>
-  <p><%= @user.position %></p>
-  <p><%= @user.gender %></p>
-  <p><%= @user.footedness %></p>
-  <p><%= @user.weight %></p>
-  <p><%= @user.height %></p>
-  <p><%= @user.description %></p>
-
-    <% if @user.id == current_user.id %>
-    <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-secondary" %>
-    <% end %>
 
 
-    <%= link_to 'Go back', users_path %>
-    <% if @user.id == current_user.id %>
-    <%= link_to 'Delete', user_path(@user), method: :delete, data: { confirm: 'Are you sure you want to delete your info?' } %>
-    <% end %>
 </div>
