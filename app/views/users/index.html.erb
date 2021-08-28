@@ -1,4 +1,4 @@
-<h1> Search our athletes </h1>
+<h2> Search our athletes </h2>
 
 <%= form_tag users_path, method: :get do %>
   <div class="search-form-control form-group">
@@ -25,7 +25,7 @@
                 <% end %>
             </h2>
             <p>
-            19 years old
+            <i class="fas fa-map-marker"></i> Brussels
             </p>
             <p>
               <%= user.sport %> - <%= user.position %> - <%= user.footedness %>-footed
