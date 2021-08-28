@@ -1,11 +1,11 @@
-<% if current_page?(controller: "pages", action: "home") %>
+<% if params[:action] == "home" && params[:controller] == "pages"%>
   <div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top">
 <% else %>
   <div class="navbar navbar-expand-sm navbar-dark navbar-lewagon fixed-top">
 <% end %>
   <div class="brand">
     <%= link_to "/", class: "logo" do %>
-      <% if current_page?(controller: "pages", action: "home") %>
+      <% if params[:action] == "home" && params[:controller] == "pages"%>
         <%= image_tag "https://res.cloudinary.com/dzc11fywj/image/upload/v1630145503/1_1_tzpn5v.png" %>
       <% else %>
         <%= image_tag "https://res.cloudinary.com/dzc11fywj/image/upload/v1628940408/1_vgpd59.png" %>
