@@ -12,6 +12,14 @@ class UsersController < ApplicationController
     else
       @users = User.all
     end
+
+
+    if params["/users"].present?
+      @users = User.filter(params["/users"].slice(:sport, :position, :gender, :footedness, :weight, :height))
+     else
+      @users = User.all
+    end
+
   end
 
   def show
