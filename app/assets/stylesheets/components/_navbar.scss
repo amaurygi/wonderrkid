@@ -1,6 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background-color: transparentb;
+  background-color: transparent;
   transition: 0.5s background-color ease;
 }
 
@@ -12,19 +12,29 @@
   width: 40px;
 }
 
-.navbar-lewagon-white {
-  background-color: black;
-}
-
 .brand .logo img {
   max-width: 300px;
   text-align: center;
 }
 
-.navbar-light .navbar-nav .show > .nav-link, .navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .nav-link.active {
+.navbar-light .navbar-nav .nav-link {
   color: white;
 }
 
-.navbar-light .navbar-nav .nav-link {
+.navbar-light .navbar-nav .nav-link:hover {
   color: white;
+  font-weight: bolder;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: black;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: black;
+  font-weight: bolder;
+}
+
+.navbar-dark {
+  position: relative;
 }
