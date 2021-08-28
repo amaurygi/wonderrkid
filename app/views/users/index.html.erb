@@ -1,75 +1,70 @@
-<h1> Search our athletes </h1>
+<h2> Search our athletes </h2>
 
-<%= form_tag users_path, method: :get do %>
-  <div class="search-form-control form-group">
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Find new superstar"
-  %>
-  <%= submit_tag "Search", class: "btn btn-success" %>
-  </div>
-<% end %>
 
- <div class="search-form-control form-group">
-<%= simple_form_for users_path, method: :get, wrapper: :inline_form, html: {class: "form-inline"} do |f| %>
+<div class="search-form-control form-group">
+  <%= simple_form_for users_path, method: :get, wrapper: :inline_form, html: {class: "form-inline"} do |f| %>
     <%= f.input :sport, :collection => ['Football', 'Basketball', 'Handball', 'Volleyball'], input_html: { class: "mr-2" }, prompt: "Sport" %>
     <%= f.input :position, as: :string, input_html: { class: "position-field mr-2" }, placeholder: "position" %>
-    <%= f.input :gender, :collection => ['female', 'male'], input_html: { class: "mr-2" }, prompt: "Gender" %>
+    <%= f.input :gender, :collection => ['Female', 'Male'], input_html: { class: "mr-2" }, prompt: "Gender" %>
     <%= f.input :footedness, :collection => ['Left', 'Right'], input_html: { class: "mr-2" }, prompt: "Footedness" %>
     <%= f.input :weight, as: :integer, input_html: { class: "weight-field mr-2" }, placeholder: "weight" %>
     <%= f.input :height, as: :integer, input_html: { class: "height-field mr-2" }, placeholder: "height" %>
 
-
-    <%= f.range_field :w1, :min=>0, :max=>200, :class=>"slide", :id=>"slider1"%>
     <%= f.submit "Apply filters", class: "btn btn-primary" %>
- <% end %>
+  <% end %>
 </div>
 
 
 <div class="cards">
-
-<div class="container">
-
-  <% @users.each do |user| %>
-    <div class="card">
-      <div class="card-body">
-        <h2>
-          <%= link_to user.first_name, user_path(user)%>
-          <%= link_to user.last_name, user_path(user)%>
-            <% if user.gender == "Male" %>
-              <i class="fas fa-mars"></i>
-            <% else %>
-              <i class="fas fa-venus"></i>
-            <% end %>
-        </h2>
-        <p>
-        19 years old
-        </p>
-        <p>
-          <%= user.sport %> - <%= user.position %> - <%= user.footedness %>-footed
-        </p>
-        <div class="card-header">
-          <%= cl_image_tag user.photos.first&.key %>
-        </div>
-        <div class="user-info">
-        <br>
+  <div class="container">
+    <% @users.each do |user| %>
+      <%= link_to user_path(user) do %>
+        <div class="card">
+          <div class="card-body">
+            <h2>
+              <%= user.first_name %>
+              <%= user.last_name %>
+              <% if user.gender == "Male" %>
+                <i class="fas fa-mars"></i>
+              <% else %>
+                <i class="fas fa-venus"></i>
+              <% end %>
+            </h2>
             <p>
-            <i class="fas fa-weight-hanging"></i> <%= user.weight %>kg
-            <i class="fas fa-text-height"></i> <%= user.height %>cm
-            <i class="fas fa-birthday-cake"> </i> 03/08/1991
+              19 years old
             </p>
-            <p><%= user.description%></p>
+            <div class="user-info">
+              <p>
+              <i class="fas fa-map-marker"></i> Brussels
+              </p>
+              <p>
+                <%= user.sport %> - <%= user.position %> - <%= user.footedness %>-footed
+              </p>
+            </div> 
+            <div class="card-header">
+              <%= cl_image_tag user.photos.first&.key %>
+            </div>  
+            <div class="user-info">
+              <div class="stats">
+                <p>
+                <i class="fas fa-weight-hanging"></i> <%= user.weight %>kg
+                <i class="fas fa-text-height"></i> <%= user.height %>cm
+                <i class="fas fa-birthday-cake"> </i> 03/08/1991
+                </p>
+              </div>
+              <p><%= user.description%></p>
+            </div>
+            <div class="buttons">
+              <p><% if user == current_user %>
+                <a class="btn-show"><%= link_to 'Edit', edit_user_path(user), class: 'btn btn-primary' %></a>
+              <% end %>
+              <% if user == current_user %>
+                <a class="btn-show"><%= link_to "delete", user_path(user), method: :delete, class: 'btn btn-primary' %></a>
+              <% end %>
+            </div>
+          </div>
         </div>
-        <div class="buttons">
-          <p><% if user == current_user %>
-            <a class="btn-show"><%= link_to 'Edit', edit_user_path(user), class: 'btn btn-primary' %></a>
-          <% end %>
-          <% if user == current_user %>
-            <a class="btn-show"><%= link_to "delete", user_path(user), method: :delete, class: 'btn btn-primary' %></a>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  <% end %>
+      <% end %>
+    <% end %>
+  </div>
 </div>

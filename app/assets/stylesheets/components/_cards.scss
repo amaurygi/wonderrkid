@@ -2,35 +2,85 @@
 * {
   box-sizing: border-box;
 }
+
 .container {
   display: flex;
-  width: 1040px;
+  width: 1000px;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  a {
+  text-decoration: none;
+  color: black;
+  }
 }
+
 .card {
-  margin: 10px;
+  margin: 5px;
   background-color: #fff;
-  border-radius: 10px;
+  border-radius: 5px;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   width: 300px;
 }
+
+.card:hover {
+  transform: translateY(-5px) scale(1.005) translateZ(0);
+  box-shadow: 0 24px 36px rgba(0,0,0,0.11),
+    0 24px 46px var(--box-shadow-color);
+  cursor: pointer;
+}
+
+.card-header {
+  padding: 0px;
+}
+
 .card-header img {
   width: 100%;
   height: 200px;
   object-fit: fill;
+  border-radius: 2px;;
 }
+
 .card-body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: flex-start;
-  padding: 20px;
+  padding: 10px;
   min-height: 250px;
 }
 
 .card-body p {
   font-size: 13px;
-  margin: 0 0 40px;
+  margin: 0px;
+}
+
+.card-body h2 {
+  font-size: 20px;
+  margin: 0px;
+  color: black;
+  font-weight: bold;
+}
+
+.card-body h2 a {
+  color: black;
+}
+
+.stats {
+  margin: 3px;
+  text-align: center;
+}
+
+.gender {
+  text-align: right;
+}
+
+i {
+  color: #D0D0D0;
+}
+
+.user-info {
+  width: 100%;
+    p {
+    width: 100%;
+  }
 }
