@@ -2,16 +2,24 @@ class UsersController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update, :destroy, :follow]
 
   def index
-    if params[:query].present?
-      sql_query = "first_name ILIKE :query
-        OR last_name ILIKE :query
-        OR sport ILIKE :query
-        OR position ILIKE :query
-        OR description ILIKE :query"
-      @users = User.where(sql_query, query: "%#{params[:query]}%")
-    else
+    # if params[:query].present?
+    #   sql_query = "first_name ILIKE :query
+    #     OR last_name ILIKE :query
+    #     OR sport ILIKE :query
+    #     OR position ILIKE :query
+    #     OR description ILIKE :query"
+    #   @users = User.where(sql_query, query: "%#{params[:query]}%")
+    # else
+    #   @users = User.all
+    # end
+
+
+    if params["/users"].present?
+      @users = User.filter(params["/users"].slice(:sport, :position, :gender, :footedness, :weight, :height))
+     else
       @users = User.all
     end
+
   end
 
   def show
@@ -27,8 +35,8 @@ class UsersController < ApplicationController
 
   def update
     if @user.id == current_user.id
-      @user.update(user_params)
       @user.avatar.attach(user_params[:avatar]) if user_params[:avatar].present?
+      @user.update(user_params)
       redirect_to user_path(@user)
     else
       flash[:alert] = "You cannot edit other profiles!"
@@ -49,7 +57,7 @@ private
   end
 
   def user_params
-    params.require(:user).permit(:first_name,:last_name,:sport,:position,:gender,:footedness,:weight,:height, :description, :avatar, :photos [])
+    params.require(:user).permit(:first_name,:last_name,:sport,:position,:gender,:footedness,:weight,:height, :description, :avatar, photos: [])
   end
 
 end
