@@ -1,6 +1,5 @@
 <h2> Search our athletes </h2>
 
-
 <div class="search-form-control form-group">
   <%= simple_form_for users_path, method: :get, wrapper: :inline_form, html: {class: "form-inline"} do |f| %>
     <%= f.input :sport, :collection => ['Football', 'Basketball', 'Handball', 'Volleyball'], input_html: { class: "mr-2" }, prompt: "Sport" %>
