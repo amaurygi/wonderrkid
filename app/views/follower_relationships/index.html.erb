@@ -1,0 +1,18 @@
+<br>
+<br>
+<br>
+
+<h1>Relationships</h1>
+
+<% @connections.each do |fr| %>
+<ul>
+  <h3>
+    <%= fr.first_name %>
+    <%= fr.last_name %> 
+    <% if fr.avatar.attached? %>
+        <%= cl_image_tag fr.avatar.key, height: 100, width: 100, class: "avatar-profile" %>
+    <% end %>
+  </h3>
+</ul>
+  <% end %>
+
