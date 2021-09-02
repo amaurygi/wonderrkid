@@ -28,6 +28,10 @@
   box-shadow: 0 24px 36px rgba(0,0,0,0.11),
     0 24px 46px var(--box-shadow-color);
   cursor: pointer;
+  border-color: #2871AA;
+  h2 {
+    color: #2871AA;
+  }
 }
 
 .card-header {
