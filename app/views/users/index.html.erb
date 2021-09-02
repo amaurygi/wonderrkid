@@ -62,14 +62,14 @@
               </div>
               <p><%= user.description%></p>
             </div>
-            <div class="buttons">
+
               <p><% if user == current_user %>
-                <a class="btn-show"><%= link_to 'Edit', edit_user_path(user), class: 'btn btn-primary' %></a>
+                <%= link_to 'Edit', edit_user_path(user), class: 'btn btn-primary' %></a>
               <% end %>
               <% if user == current_user %>
-                <a class="btn-show"><%= link_to "delete", user_path(user), method: :delete, class: 'btn btn-primary' %></a>
+                <%= link_to "delete", user_path(user), method: :delete, class: 'btn btn-outline-primary' %></a>
               <% end %>
-            </div>
+
           </div>
         </div>
       <% end %>
