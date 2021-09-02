@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:show, :edit, :update, :destroy]
+  before_action :find_user, only: [:show, :edit, :update, :destroy, :follow]
 
   def index
     # if params[:query].present?
@@ -48,6 +48,7 @@ class UsersController < ApplicationController
     @user.destroy
     redirect_to users_path
   end
+
 
 private
 

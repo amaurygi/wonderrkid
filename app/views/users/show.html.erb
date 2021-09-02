@@ -30,9 +30,10 @@
 
       <%= link_to 'Go back', users_path, class: "btn btn-lg btn-primary"  %>
       <% if @user.id == current_user.id %>
-      <%= link_to 'Delete', user_path(@user), method: :delete, data: { confirm: 'Are you sure you want to delete your info?' }, class: "btn btn-lg btn-danger"  %>
+          <%= link_to 'Delete', user_path(@user), method: :delete, data: { confirm: 'Are you sure you want to delete your info?' }, class: "btn btn-lg btn-danger"  %>
+      <% else %>
+          <%= link_to "Follow", user_follower_relationships_path(@user), method: "POST"  %>
       <% end %>
+      <%= link_to "Relations", user_follower_relationships_path(@user) %> 
   </div>
-
-
 </div>
