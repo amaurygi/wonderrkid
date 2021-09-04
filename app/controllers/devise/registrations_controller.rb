@@ -9,7 +9,7 @@ class Devise::RegistrationsController < DeviseController
   # GET /resource/sign_up
   def new
     build_resource
-    @scout = true if params[:scout].present?
+    @scout = true if params[:scout].present
     yield resource if block_given?
     respond_with resource
   end
@@ -21,6 +21,7 @@ class Devise::RegistrationsController < DeviseController
     resource.save
     yield resource if block_given?
     if resource.persisted?
+
       resource.role = if params.dig('user', 'role').present?
                         'scout'
                       else

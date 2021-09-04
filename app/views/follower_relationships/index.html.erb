@@ -6,6 +6,7 @@
 
 <% @connections.each do |fr| %>
 <ul>
+<div class="card mt4-p3">
   <h3>
     <%= fr.first_name %>
     <%= fr.last_name %> 
@@ -13,6 +14,8 @@
         <%= cl_image_tag fr.avatar.key, height: 100, width: 100, class: "avatar-profile" %>
     <% end %>
   </h3>
+    <%= link_to "messages",  %>
+</div>
 </ul>
   <% end %>
 
