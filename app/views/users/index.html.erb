@@ -1,3 +1,12 @@
+          <!-- Breadcrumb -->
+          <nav aria-label="breadcrumb" class="main-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
+              <li class="breadcrumb-item">Athletes</li>
+            </ol>
+          </nav>
+          <!-- /Breadcrumb -->
+
 <h2> Search our athletes </h2>
 
 <div class="search-form-control form-group">
@@ -48,19 +57,19 @@
                 <p>
                 <i class="fas fa-weight-hanging"></i> <%= user.weight %>kg
                 <i class="fas fa-text-height"></i> <%= user.height %>cm
-                <i class="fas fa-birthday-cake"> </i> 03/08/1991
+                <i class="fas fa-birthday-cake"></i> 03/08/1991
                 </p>
               </div>
               <p><%= user.description%></p>
             </div>
-            <div class="buttons">
+
               <p><% if user == current_user %>
-                <a class="btn-show"><%= link_to 'Edit', edit_user_path(user), class: 'btn btn-primary' %></a>
+                <%= link_to 'Edit', edit_user_path(user), class: 'btn btn-primary' %></a>
               <% end %>
               <% if user == current_user %>
-                <a class="btn-show"><%= link_to "delete", user_path(user), method: :delete, class: 'btn btn-primary' %></a>
+                <%= link_to "delete", user_path(user), method: :delete, class: 'btn btn-outline-primary' %></a>
               <% end %>
-            </div>
+
           </div>
         </div>
       <% end %>

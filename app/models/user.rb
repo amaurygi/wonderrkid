@@ -21,4 +21,6 @@ class User < ApplicationRecord
   scope :filter_by_height, -> (height) { where height: height }
   scope :filter_by_weight, -> (weight) { where weight: weight }
 
+  validates_length_of :description, :maximum => 120
+
 end
