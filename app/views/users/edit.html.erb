@@ -10,22 +10,27 @@
 <!-- /Breadcrumb -->
 <div class="container py-5">
   <div class="row">
-    <div class="col-12 col-md-6 offset-lg-3">
+    <div class="col">
       <div class="bg-white rounded p-3 shadow">
-        <h3>Edit your info</h3>
+        <h3>Edit your profile</h3>
         <%= simple_form_for @user do |f| %>
           <%= f.label :avatar %>
           <%= f.file_field :avatar, as: :file %>
-          <%= f.input :first_name, placeholder: 'Name of the user' %>
-          <%= f.input :last_name, placeholder: 'Last Name of the user' %>
-          <%= f.input :sport, placeholder: 'Sport of the user' %>
-          <%= f.input :position, placeholder: 'Position of the user' %>
-          <%= f.input :gender, placeholder: 'Gender of the user' %>
-          <%= f.input :footedness, placeholder: 'Footedness of the user' %>
-          <%= f.input :weight, placeholder: 'Weight of the user in kg' %>
-          <%= f.input :height, placeholder: 'Height of the user in cm' %>
-          <%= f.input :description, placeholder: 'Describe how cozy the user is <3' %>
+          <%= f.input :first_name, placeholder: 'First name' %>
+          <%= f.input :last_name, placeholder: 'Last name' %>
+          <%= f.input :role, placeholder: 'Athlete or Scout' %>
+          <%= f.input :sport, placeholder: 'Sport' %>
+          <hr>
+          <p>Only if you're an Athlete<p>
+          <%= f.input :position, placeholder: 'Position' %>
+          <%= f.input :gender, placeholder: 'Male or Female' %>
+          <%= f.input :footedness, placeholder: 'Left or Right' %>
+          <%= f.input :weight, placeholder: 'Weight in kg' %>
+          <%= f.input :height, placeholder: 'Height in cm' %>
+          <%= f.input :description, placeholder: 'A short description of yourself' %>
+          <%= f.input :photos, as: :file, input_html: { multiple: true } %>
           <%= f.submit class: 'btn btn-primary' %>
+      </div>
         <% end %>
       </div>
     </div>
