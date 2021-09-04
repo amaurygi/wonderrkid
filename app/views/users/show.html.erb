@@ -40,7 +40,7 @@
               </div>
             </div>
 
-            <% if @user.role == "Athlete" %>
+            <% if @user.role == "Athlete" or "" %>
               <div class="col">
                 <div class="profile-card mb-3">
                   <div class="profile-card-body">
@@ -142,7 +142,7 @@
         </div>
     </div>
 
-<% if @user.role == "Athlete" %>
+<% if @user.role == "Athlete" or "" %>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
