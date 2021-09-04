@@ -11,12 +11,17 @@
 
 <div class="search-form-control form-group">
   <%= simple_form_for users_path, method: :get, wrapper: :inline_form, html: {class: "form-inline"} do |f| %>
+    <%= f.input :first_name, as: :string, input_html: { class: "first_name-field mr-2" }, placeholder: "First Name" %>
+    <%= f.input :last_name, as: :string, input_html: { class: "last_name-field mr-2" }, placeholder: "Last Name" %>
     <%= f.input :sport, :collection => ['Football', 'Basketball', 'Handball', 'Volleyball'], input_html: { class: "mr-2" }, prompt: "Sport" %>
-    <%= f.input :position, as: :string, input_html: { class: "position-field mr-2" }, placeholder: "position" %>
+    <%= f.input :position, as: :string, input_html: { class: "position-field mr-2" }, placeholder: "Position" %>
     <%= f.input :gender, :collection => ['Female', 'Male'], input_html: { class: "mr-2" }, prompt: "Gender" %>
     <%= f.input :footedness, :collection => ['Left', 'Right'], input_html: { class: "mr-2" }, prompt: "Footedness" %>
-    <%= f.input :weight, as: :integer, input_html: { class: "weight-field mr-2" }, placeholder: "weight" %>
-    <%= f.input :height, as: :integer, input_html: { class: "height-field mr-2" }, placeholder: "height" %>
+    <%= f.input :weight, as: :integer, input_html: { class: "weight-field mr-2" }, placeholder: "Weight" %>
+    <%= f.input :height, as: :integer, input_html: { class: "height-field mr-2" }, placeholder: "Height" %>
+    <%= f.input :age, as: :integer, input_html: { class: "age-field mr-2" }, placeholder: "Age" %>
+    <%= f.input :nationality, as: :string, input_html: { class: "nationality-field mr-2" }, placeholder: "Nationality" %>
+    <%= f.input :city, as: :string, input_html: { class: "city-field mr-2" }, placeholder: "City" %>
 
     <%= f.submit "Apply filters", class: "btn btn-primary" %>
   <% end %>
@@ -48,10 +53,10 @@
               <p>
                 <%= user.sport %> - <%= user.position %> - <%= user.footedness %>-footed
               </p>
-            </div> 
+            </div>
             <div class="card-header">
               <%= cl_image_tag user.photos.first&.key %>
-            </div>  
+            </div>
             <div class="user-info">
               <div class="stats">
                 <p>

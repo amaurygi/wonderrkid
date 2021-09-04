@@ -13,18 +13,21 @@
     <div class="col">
       <div class="bg-white rounded p-3 shadow">
         <h3>Edit your profile</h3>
-        <% if params[:skip_later].present? %>
+         <% if params[:skip_later].present? %>
           <%= link_to "Skip Later", users_path, class: 'btn btn-primary' %>
-        <% end %>
-        <hr>
-        <%= simple_form_for @user do |f| %>
+         <% end %>
+         <hr>
+         <%= simple_form_for @user do |f| %>
           <%= f.label :avatar %>
           <%= f.file_field :avatar, as: :file %>
+          <%= f.input :role, required: true, :collection => ['Athlete', 'Scout'], input_html: { class: "mr-2" } %>
           <%= f.input :first_name, placeholder: 'First name' %>
           <%= f.input :last_name, placeholder: 'Last name' %>
-          <%= f.input :role, placeholder: 'Athlete or Scout' %>
           <%= f.input :sport, placeholder: 'Sport' %>
-          <hr>
+          <%= f.input :age, placeholder: 'Age' %>
+          <%= f.input :nationality, placeholder: 'Nationality' %>
+          <%= f.input :city, placeholder: 'City' %>
+        <hr>
           <p>Only if you're an Athlete<p>
           <%= f.input :position, placeholder: 'Position' %>
           <%= f.input :gender, placeholder: 'Male or Female' %>
@@ -36,6 +39,7 @@
           <%= f.submit class: 'btn btn-primary' %>
       </div>
         <% end %>
+
       </div>
     </div>
   </div>
