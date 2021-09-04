@@ -25,7 +25,8 @@
                       <% if @user.role == "Athlete" %>
                       <p class="text-muted font-size-sm"><%= @user.position %></p>
                       <% end %>
-                      <p class="text-muted font-size-sm"><i class="fas fa-map-marker"></i> Brussels</p>
+                      <p class="text-muted font-size-sm"><i class="fas fa-map-marker"></i> <%= @user.city %></p>
+                      <p class="text-muted font-size-sm"><i class="fas fa-flag"></i> <%= @user.nationality %></p></p>
                       <p class="text-muted font-size-sm"><i class="fas fa-birthday-cake"></i> 03/08/1991</p>
                       <p><% if @user == current_user %>
                         <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-primary' %>
