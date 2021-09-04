@@ -15,6 +15,13 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
+
+    <% if @scout %>
+      <%= f.hidden_field :role,
+                         value: 'scout' %>
+    <% end %>
+
+
   </div>
 
   <div class="form-actions">
