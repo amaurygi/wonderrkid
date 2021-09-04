@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
 
     if params["/users"].present?
-      @users = User.filter(params["/users"].slice(:sport, :position, :gender, :footedness, :weight, :height))
+      @users = User.filter(params["/users"].slice(:first_name, :last_name, :sport, :position, :gender, :footedness, :weight, :height))
      else
       @users = User.all
     end
