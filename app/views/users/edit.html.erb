@@ -13,6 +13,10 @@
     <div class="col">
       <div class="bg-white rounded p-3 shadow">
         <h3>Edit your profile</h3>
+        <% if params[:skip_later].present? %>
+          <%= link_to "Skip Later", users_path, class: 'btn btn-primary' %>
+        <% end %>
+        <hr>
         <%= simple_form_for @user do |f| %>
           <%= f.label :avatar %>
           <%= f.file_field :avatar, as: :file %>
