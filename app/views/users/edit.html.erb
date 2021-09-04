@@ -27,6 +27,9 @@
           <%= f.input :description, placeholder: 'Describe how cozy the user is <3' %>
           <%= f.submit class: 'btn btn-primary' %>
         <% end %>
+        <% if params[:skip_later].present? %>
+            <%= link_to "Skip Later", users_path, class: 'btn btn-primary' %>
+        <% end %>
       </div>
     </div>
   </div>
