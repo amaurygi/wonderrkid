@@ -2,12 +2,14 @@
   <%= link_to "Log in", new_session_path(resource_name) %><br />
 <% end %>
 
-
+<br>
 
 <% if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "Register as an athlete", new_registration_path(resource_name) %><br />
-  <%= link_to "Register as a scout", new_registration_path(resource_name, scout: true) %><br />
+  <%= link_to "Register as an athlete", new_registration_path(resource_name), class: 'btn btn-outline-primary' %>
+  <%= link_to "Register as a scout", new_registration_path(resource_name, scout: true), class: 'btn btn-outline-primary'  %><br />
 <% end %>
+
+<br>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
   <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
