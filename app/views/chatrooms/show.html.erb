@@ -2,7 +2,8 @@
 <br>
 <br>
 
-<h1>chatroom <%= @chatroom.id %> <%= current_user.first_name %> <%= FollowerRelationship.where(user: current_user, chatroom_id: @chatroom) %></h1>
+<h1>
+chatroom n°<%= @chatroom.id %> <%= @chatroom.name %></h1>
 <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
   <% @chatroom.messages.each do |message| %>
     <div class="message-container" id="message-<%= message.id %>">
