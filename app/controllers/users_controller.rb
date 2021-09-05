@@ -57,7 +57,7 @@ private
   end
 
   def user_params
-    params.require(:user).permit(:first_name,:last_name,:sport,:position,:role,:gender,:footedness,:weight,:height, :description, :avatar, photos: [])
+    params.require(:user).permit(:first_name,:last_name,:sport,:position,:role,:gender,:city,:nationality,:age,:footedness,:weight,:height, :description, :avatar, photos: [])
   end
 
 end
