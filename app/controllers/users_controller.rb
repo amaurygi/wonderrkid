@@ -23,7 +23,8 @@ class UsersController < ApplicationController
   end
 
   def show
-
+    @relation = FollowerRelationship.where(user: current_user.id, followed_user: @user.id)[0]
+    @chatroom = @relation.chatroom if @relation
   end
 
   def new
