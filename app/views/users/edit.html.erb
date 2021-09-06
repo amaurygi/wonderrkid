@@ -18,11 +18,6 @@
         <% end %>
         <hr>
         <%= simple_form_for @user do |f| %>
-         <% if params[:skip_later].present? %>
-          <%= link_to "Skip Later", users_path, class: 'btn btn-primary' %>
-         <% end %>
-         <hr>
-         <%= simple_form_for @user do |f| %>
           <%= f.label :avatar %>
           <%= f.file_field :avatar, as: :file %>
           <%= f.input :role, required: true, :collection => ['Athlete', 'Scout'], input_html: { class: "mr-2" } %>
@@ -32,7 +27,7 @@
           <%= f.input :age, placeholder: 'Age' %>
           <%= f.input :nationality, placeholder: 'Nationality' %>
           <%= f.input :city, placeholder: 'City' %>
-        <hr>
+          <hr>
           <p>Only if you're an Athlete<p>
           <%= f.input :position, placeholder: 'Position' %>
           <%= f.input :gender, placeholder: 'Male or Female' %>
@@ -42,7 +37,6 @@
           <%= f.input :description, placeholder: 'A short description of yourself' %>
           <%= f.input :photos, as: :file, input_html: { multiple: true } %>
           <%= f.submit class: 'btn btn-primary' %>
-      </div>
         <% end %>
       </div>
     </div>
