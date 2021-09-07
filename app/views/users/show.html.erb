@@ -29,7 +29,7 @@
                       <p class="text-muted font-size-sm"><i class="fas fa-flag"></i> <%= @user.nationality %></p></p>
                       <p class="text-muted font-size-sm"><i class="fas fa-birthday-cake"></i> 03/08/1991</p>
                       <p><% if @user == current_user %>
-                        <%= link_to 'Relations', edit_user_path(@user), class: 'btn btn-primary' %>
+                        <%= link_to 'Relations', user_follower_relationships_path(@user), class: 'btn btn-primary' %>
                         <%= link_to "Edit", edit_user_path(@user), class: 'btn btn-outline-primary' %>
                         <%= link_to "delete", user_path(@user), method: :delete, class: 'btn btn-outline-primary' %>
                       <% else %>
