@@ -29,7 +29,8 @@
                       <p class="text-muted font-size-sm"><i class="fas fa-flag"></i> <%= @user.nationality %></p></p>
                       <p class="text-muted font-size-sm"><i class="fas fa-birthday-cake"></i> 03/08/1991</p>
                       <p><% if @user == current_user %>
-                        <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-primary' %>
+                        <%= link_to 'Relations', edit_user_path(@user), class: 'btn btn-primary' %>
+                        <%= link_to "Edit", user_path(@user), method: :delete, class: 'btn btn-outline-primary' %>
                         <%= link_to "delete", user_path(@user), method: :delete, class: 'btn btn-outline-primary' %>
                       <% else %>
                         <% if @chatroom %>
@@ -47,7 +48,7 @@
               </div>
             </div>
 
-            <% if @user.role == "Athlete" or "" %>
+            <% if @user.role == "Athlete"%>
               <div class="col">
                 <div class="profile-card mb-3">
                   <div class="profile-card-body">
@@ -149,7 +150,7 @@
         </div>
     </div>
 
-<% if @user.role == "Athlete" or "" %>
+<% if @user.role == "Athlete"%>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
