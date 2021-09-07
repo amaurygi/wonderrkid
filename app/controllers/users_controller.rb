@@ -2,21 +2,21 @@ class UsersController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update, :destroy, :follow]
 
   def index
-    # if params[:query].present?
-    #   sql_query = "first_name ILIKE :query
-    #     OR last_name ILIKE :query
-    #     OR sport ILIKE :query
-    #     OR position ILIKE :query
-    #     OR description ILIKE :query"
-    #   @users = User.where(sql_query, query: "%#{params[:query]}%")
+    if params[:query].present?
+      sql_query = "first_name ILIKE :query
+        OR last_name ILIKE :query
+        OR sport ILIKE :query
+        OR position ILIKE :query
+        OR description ILIKE :query"
+      @users = User.where(sql_query, query: "%#{params[:query]}%")
     # else
     #   @users = User.all
     # end
 
 
-    if params["/users"].present?
-      @users = User.filter(params["/users"].slice(:first_name, :last_name, :sport, :position, :gender, :footedness, :weight, :height))
-     else
+    elsif params["/users"].present?
+      @users = User.filter(params["/users"].slice(:first_name, :last_name, :sport, :position, :gender, :footedness, :weight, :height, :age, :nationality, :city))
+    else
       @users = User.all
     end
 
