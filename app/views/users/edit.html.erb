@@ -23,15 +23,15 @@
           <%= f.input :role, required: true, :collection => ['Athlete', 'Scout'], input_html: { class: "mr-2" } %>
           <%= f.input :first_name, placeholder: 'First name' %>
           <%= f.input :last_name, placeholder: 'Last name' %>
-          <%= f.input :sport, placeholder: 'Sport' %>
+          <%= f.input :sport, :collection => ['Football', 'Basketball', 'Handball', 'Volleyball'], input_html: { class: "mr-2" }, prompt: "Sport" %>
           <%= f.input :age, placeholder: 'Age' %>
           <%= f.input :nationality, placeholder: 'Nationality' %>
           <%= f.input :city, placeholder: 'City' %>
           <hr>
           <p>Only if you're an Athlete<p>
           <%= f.input :position, placeholder: 'Position' %>
-          <%= f.input :gender, placeholder: 'Male or Female' %>
-          <%= f.input :footedness, placeholder: 'Left or Right' %>
+          <%= f.input :gender, :collection => ['Female', 'Male'], input_html: { class: "mr-2" }, prompt: "Gender" %>
+              <%= f.input :footedness, :collection => ['Left', 'Right'], input_html: { class: "mr-2" }, prompt: "Footedness" %>
           <%= f.input :weight, placeholder: 'Weight in kg' %>
           <%= f.input :height, placeholder: 'Height in cm' %>
           <%= f.input :description, placeholder: 'A short description of yourself' %>
