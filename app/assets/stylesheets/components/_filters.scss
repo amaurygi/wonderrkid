@@ -1,0 +1,22 @@
+.filters {
+    flex: 1 1 auto;
+    min-height: 1px;
+    width: 260px;
+    widows: 260px;
+    padding: 1rem;
+    background-color: #fff;
+    margin: 10px;
+    position: fixed;
+}
+
+.each_filter {
+  margin-bottom: 5px;
+  width: 200px;
+}
+
+
+.form-inline .form-control {
+    display: inline-block;
+    width: 220px;
+    vertical-align: middle;
+}

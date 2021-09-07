@@ -7,23 +7,53 @@
           </nav>
           <!-- /Breadcrumb -->
 
+
 <h2> Search our athletes </h2>
 
 <div class="search-form-control form-group">
-  <%= simple_form_for users_path, method: :get, wrapper: :inline_form, html: {class: "form-inline"} do |f| %>
-    <%= f.input :first_name, as: :string, input_html: { class: "first_name-field mr-2" }, placeholder: "First Name" %>
-    <%= f.input :last_name, as: :string, input_html: { class: "last_name-field mr-2" }, placeholder: "Last Name" %>
-    <%= f.input :sport, :collection => ['Football', 'Basketball', 'Handball', 'Volleyball'], input_html: { class: "mr-2" }, prompt: "Sport" %>
-    <%= f.input :position, as: :string, input_html: { class: "position-field mr-2" }, placeholder: "Position" %>
-    <%= f.input :gender, :collection => ['Female', 'Male'], input_html: { class: "mr-2" }, prompt: "Gender" %>
-    <%= f.input :footedness, :collection => ['Left', 'Right'], input_html: { class: "mr-2" }, prompt: "Footedness" %>
-    <%= f.input :weight, as: :integer, input_html: { class: "weight-field mr-2" }, placeholder: "Weight" %>
-    <%= f.input :height, as: :integer, input_html: { class: "height-field mr-2" }, placeholder: "Height" %>
-    <%= f.input :age, as: :integer, input_html: { class: "age-field mr-2" }, placeholder: "Age" %>
-    <%= f.input :nationality, as: :string, input_html: { class: "nationality-field mr-2" }, placeholder: "Nationality" %>
-    <%= f.input :city, as: :string, input_html: { class: "city-field mr-2" }, placeholder: "City" %>
+  <%= form_tag users_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Find a player"
+    %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+  <% end %>
+</div>
 
-    <%= f.submit "Apply filters", class: "btn btn-primary" %>
+<div class="filters">
+  <%= simple_form_for users_path, method: :get, wrapper: :inline_form, html: {class: "form-inline"} do |f| %>
+    <div class="each_filter">
+      <%= f.input :sport, required: false, :collection => ['Football', 'Basketball', 'Handball', 'Volleyball'], input_html: { class: "mr-2" }, prompt: "Sport" %>
+    </div>
+
+    <div class="each_filter">
+      <%= f.input :position, required: false, as: :string, input_html: { class: "position-field mr-2" }, placeholder: "Position" %>
+    </div>
+    <div class="each_filter">
+      <%= f.input :gender, required: false, :collection => ['Female', 'Male'], input_html: { class: "mr-2" }, prompt: "Gender" %>
+    </div>
+    <div class="each_filter">
+      <%= f.input :footedness, required: false, :collection => ['Left', 'Right'], input_html: { class: "mr-2" }, prompt: "Footedness" %>
+    </div>
+    <div class="each_filter">
+      <%= f.input :weight, required: false, as: :integer, input_html: { class: "weight-field mr-2" }, placeholder: "Weight" %>
+    </div>
+    <div class="each_filter">
+      <%= f.input :height, required: false, as: :integer, input_html: { class: "height-field mr-2" }, placeholder: "Height" %>
+    </div>
+    <div class="each_filter">
+      <%= f.input :age, required: false, as: :integer, input_html: { class: "age-field mr-2" }, placeholder: "Age" %>
+    </div>
+    <div class="each_filter">
+      <%= f.input :nationality, required: false, as: :string, input_html: { class: "nationality-field mr-2" }, placeholder: "Nationality" %>
+    </div>
+    <div class="each_filter">
+      <%= f.input :city, required: false, as: :string, input_html: { class: "city-field mr-2" }, placeholder: "City" %>
+    </div>
+    <div class="each_filter">
+      <%= f.submit "Apply filters", class: "btn btn-primary" %>
+    </div>
   <% end %>
 </div>
 
