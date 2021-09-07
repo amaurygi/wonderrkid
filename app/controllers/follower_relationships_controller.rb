@@ -16,5 +16,10 @@ end
     end
   end
 
+  def destroy
+    @follower_relationship = FollowerRelationship.find(params[:id])
+    @follower_relationship.destroy
+    redirect_to users_path
+  end
 
 end

@@ -33,7 +33,7 @@
                         <%= link_to "delete", user_path(@user), method: :delete, class: 'btn btn-outline-primary' %>
                       <% else %>
                         <% if @chatroom %>
-                           <button class="btn btn-primary">Unfollow</button>
+                        <%= link_to 'Unfollow',  follower_relationship_path(@relation), method: :delete, class: 'btn btn-outline-danger' %>
                         <% else %>
                           <%= link_to 'Follow', user_follower_relationships_path(@user), method: :post, class: 'btn btn-primary' %>
                         <% end %>   
