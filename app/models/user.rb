@@ -14,6 +14,7 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
   has_many_attached :photos
+  has_one_attached :profile_video
 
 
   scope :filter_by_first_name, -> (first_name) { where first_name: first_name }

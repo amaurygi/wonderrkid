@@ -35,6 +35,7 @@
           <%= f.input :weight, placeholder: 'Weight in kg' %>
           <%= f.input :height, placeholder: 'Height in cm' %>
           <%= f.input :description, placeholder: 'A short description of yourself' %>
+          <%= f.file_field :profile_video %>
           <%= f.input :photos, as: :file, input_html: { multiple: true } %>
           <%= f.submit class: 'btn btn-primary' %>
         <% end %>
