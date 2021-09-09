@@ -3,18 +3,21 @@
 <br>
 
 <h1>Relationships</h1>
-
-<% @connections.each do |fr| %>
-<ul>
-<div class="card mt4-p3">
-  <h3>
-    <%= fr.first_name %>
-    <%= fr.last_name %> 
-    <% if fr.avatar.attached? %>
-        <%= cl_image_tag fr.avatar.key, height: 100, width: 100, class: "avatar-profile" %>
-    <% end %>
-  </h3>
-    <%= link_to "messages", chatroom_path(fr), class: 'btn btn-secondary' %>
-</div>
-</ul>
+  <% @connections.each do |fr| %>
+    <% unless fr.followed_user == current_user %>
+      <ul>
+      <div class="card mt4-p3">
+        <h3>
+          <%= fr.followed_user.first_name %>
+          <%= fr.followed_user.last_name %> 
+          <% if fr.followed_user.avatar.attached? %>
+              <%= cl_image_tag fr.followed_user.avatar.key, height: 100, width: 100, class: "avatar-profile" %>
+          <% end %>
+        </h3>
+          <%= link_to "messages", chatroom_path(fr), class: 'btn btn-secondary' %>
+      </div>
+      </ul>
+      <% end %>
   <% end %>
+  
+ 
