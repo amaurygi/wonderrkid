@@ -52,7 +52,7 @@ user = User.new(
   last_name:"Gilliot",
   role: "Athlete",
   sport: "Football",
-  position: Faker::Sports::Football.position,
+  position: "Offensive Midfielder",
   gender: ['Male'].sample,
   footedness: ['Right'].sample,
   weight: 69,
@@ -79,9 +79,9 @@ user = User.new(
   weight: rand(50..100),
   height: rand(120..200),
   description: Faker::Quote.yoda,
-  nationality: "Belgium",
-  city: "Waterloo",
-  age: "30"
+  nationality: "Montenegro",
+  city: "Podgorica",
+  age: "29"
 )
 user.avatar.attach(io: file, filename: 'ivo.jpg', content_type: 'image/jpg')
 user.save!
