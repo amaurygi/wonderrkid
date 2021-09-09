@@ -1,9 +1,7 @@
 class FollowerRelationshipsController < ApplicationController
  
   def index
-  @connections = (FollowerRelationship.where(user_id: current_user) + FollowerRelationship.where(followed_user_id: current_user)).uniq
-    # (User.find(params[:user_id]).followed_users + User.find(params[:user_id]).following_users).uniq
-  # 
+  @connections = Chatroom.participating(current_user)
 end
 
   def create
@@ -23,5 +21,5 @@ end
     @follower_relationship.destroy
     redirect_to users_path
   end
-
 end
+
