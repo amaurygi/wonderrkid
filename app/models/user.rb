@@ -29,6 +29,4 @@ class User < ApplicationRecord
   scope :filter_by_nationality, -> (nationality) { where nationality: nationality }
   scope :filter_by_city, -> (city) { where city: city }
 
-  validates_length_of :description, :maximum => 120
-
 end
