@@ -1,9 +1,15 @@
 
+<% if current_user.first_name == @chatroom.follower_relationship.followed_user.first_name %>
+  <% chatter = @chatroom.follower_relationship.user.first_name %>
+  <% else %>
+    <% chatter = @chatroom.follower_relationship.followed_user.first_name %>
+  <% end %>
+                    
 <div class="col-9">
   <div class="chat-room">
   
-    <h1>
-    chatroom n°<%= @chatroom.id %> <%= @chatroom.name %></h1>
+<h2>Hi <%= current_user.first_name %></h2>
+<h1>This is you Chatroom with <%= chatter %></h1>
     <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
       <% @chatroom.messages.each do |message| %>
         <div class="message mb-2 <%= 'me' if message.user == current_user %>">
@@ -22,9 +28,8 @@
     <br>
     <div class="chat-box">
         <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
-        <%= f.input :content, label: false, placeholder: "Message ##{@chatroom.name}" %>
+        <%= f.input :content, label: false, placeholder: "New message to #{chatter}" %>
       <% end %>
     </div>
     </div>
-  </div>  
-</div>
+  </div>

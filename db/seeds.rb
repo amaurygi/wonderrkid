@@ -20,8 +20,7 @@ pictures = [
   'https://yourteenmag.com/wp-content/uploads/2020/07/return-to-field-1-1135x540.jpg',
   'https://c8.alamy.com/comp/TWH5RF/teenagers-playing-informal-soccer-football-TWH5RF.jpg',
   'https://www.esquireme.com/public/images/2017/04/06/8758160_orig.jpg',
-  'https://www.abcmoney.co.uk/wp-content/uploads/2017/11/football.jpg',
-  'https://welshbattlefields.org.uk/wp-content/uploads/2020/06/px-teens-sports-1568x1045.jpeg'
+  'https://www.abcmoney.co.uk/wp-content/uploads/2017/11/football.jpg'
 ]
 
 file = URI.open('https://www.usyouthsoccer.org/assets/1/6/f-17-65-6653354_Andrea1.jpg')
@@ -32,12 +31,15 @@ user = User.new(
   last_name:"Caluwaerts",
   role: "Athlete",
   sport: "Football",
-  position: Faker::Sports::Football.position,
-  gender: ['Male', 'Female'].sample,
-  footedness: ['Left', 'Right'].sample,
-  weight: rand(50..100),
-  height: rand(120..200),
+  position: "Goalkeeper",
+  gender: ['Male'].sample,
+  footedness: ['Left'].sample,
+  weight: 70,
+  height: 177,
   description: Faker::Quote.yoda,
+  nationality: "Belgium",
+  city: "Uccle",
+  age: "52"
 )
 user.avatar.attach(io: file, filename: 'michel.jpg', content_type: 'image/jpg')
 user.save!
@@ -50,12 +52,15 @@ user = User.new(
   last_name:"Gilliot",
   role: "Athlete",
   sport: "Football",
-  position: Faker::Sports::Football.position,
-  gender: ['Male', 'Female'].sample,
-  footedness: ['Left', 'Right'].sample,
-  weight: rand(50..100),
-  height: rand(120..200),
+  position: "Offensive Midfielder",
+  gender: ['Male'].sample,
+  footedness: ['Right'].sample,
+  weight: 69,
+  height: 172,
   description: Faker::Quote.yoda,
+  nationality: "Belgium",
+  city: "Waterloo",
+  age: "30"
 )
 user.avatar.attach(io: file, filename: 'amaury.jpg', content_type: 'image/jpg')
 user.save!
@@ -69,13 +74,32 @@ user = User.new(
   role: "Athlete",
   sport: "Football",
   position: Faker::Sports::Football.position,
-  gender: ['Male', 'Female'].sample,
-  footedness: ['Left', 'Right'].sample,
+  gender: ['Male'].sample,
+  footedness: ['Right'].sample,
   weight: rand(50..100),
   height: rand(120..200),
   description: Faker::Quote.yoda,
+  nationality: "Montenegro",
+  city: "Podgorica",
+  age: "29"
 )
 user.avatar.attach(io: file, filename: 'ivo.jpg', content_type: 'image/jpg')
+user.save!
+
+file = URI.open('https://res.cloudinary.com/dzc11fywj/image/upload/v1631214233/t%C3%A9l%C3%A9chargement_qcsrcw.jpg')
+user = User.new(
+  email: 'jorge@mail.com', 
+  password: '123456', 
+  first_name:"Jorge", 
+  last_name:"Mendes",
+  role: "Scout",
+  sport: "Football",
+  position: Faker::Sports::Football.position,
+  nationality: "Portugal",
+  city: "Lisbon",
+  age: "55"
+)
+user.avatar.attach(io: file, filename: 'jorge.jpg', content_type: 'image/jpg')
 user.save!
 
 User.take(3).each do |user|

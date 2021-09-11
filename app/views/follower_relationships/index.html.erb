@@ -3,21 +3,40 @@
 <br>
 
 <h1>Relationships</h1>
+  <% unless @connections.empty? %>
   <% @connections.each do |fr| %>
-    <% unless fr.followed_user == current_user %>
-      <ul>
-      <div class="card mt4-p3">
-        <h3>
-          <%= fr.followed_user.first_name %>
-          <%= fr.followed_user.last_name %> 
-          <% if fr.followed_user.avatar.attached? %>
-              <%= cl_image_tag fr.followed_user.avatar.key, height: 100, width: 100, class: "avatar-profile" %>
-          <% end %>
-        </h3>
-          <%= link_to "messages", chatroom_path(fr), class: 'btn btn-secondary' %>
-      </div>
-      </ul>
-      <% end %>
+      <% if fr.follower_relationship.followed_user != current_user %>
+        <ul>
+        <div class="card mt4-p3">
+          <h3>
+            <%= fr.follower_relationship.followed_user.first_name %>
+            <%= fr.follower_relationship.followed_user.last_name %> 
+            <% if fr.follower_relationship.followed_user.avatar.attached? %>
+                <%= cl_image_tag fr.follower_relationship.followed_user.avatar.key, height: 100, width: 100, class: "avatar-profile" %>
+            <% end %>
+          </h3>
+            <p>is followed by you</p>
+            <%= link_to "Chatroom", chatroom_path(fr), class: 'btn btn-secondary' %>
+        </div>
+        </ul>
+        <% elsif fr.follower_relationship.user != current_user %>
+        <ul>
+        <div class="card mt4-p3">
+          <h3>
+            <%= fr.follower_relationship.user.first_name %>
+            <%= fr.follower_relationship.user.last_name %> 
+            <% if fr.follower_relationship.user.avatar.attached? %>
+                <%= cl_image_tag fr.follower_relationship.user.avatar.key, height: 100, width: 100, class: "avatar-profile" %>
+            <% end %>
+          </h3>
+          <p>Is following you</p>
+            <%= link_to "Chatroom", chatroom_path(fr), class: 'btn btn-secondary' %>
+        </div>
+        </ul>
+        <% end %>
   <% end %>
+  <% else %>
+    <p>You have no relation. Try to be more frindly!</p>
+<% end %>
   
  
