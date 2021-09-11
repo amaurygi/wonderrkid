@@ -24,6 +24,7 @@ class User < ApplicationRecord
   scope :filter_by_gender, -> (gender) { where gender: gender }
   scope :filter_by_footedness, -> (footedness) { where footedness: footedness }
   scope :filter_by_height, -> (height) { where height: height }
+  scope :between_range, -> (min, max) { where("height >= 100 OR price <= 220", min, max) }
   scope :filter_by_weight, -> (weight) { where weight: weight }
   scope :filter_by_age, -> (age) { where age: age }
   scope :filter_by_nationality, -> (nationality) { where nationality: nationality }

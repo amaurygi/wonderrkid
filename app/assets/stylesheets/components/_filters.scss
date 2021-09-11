@@ -1,12 +1,14 @@
 .filters {
-    flex: 1 1 auto;
+    // flex: 1 1 auto;
     min-height: 1px;
     width: 260px;
     widows: 260px;
     padding: 1rem;
     background-color: #fff;
     margin: 10px;
-    position: fixed;
+    position: sticky;
+    // z-index: 1;
+    top: 70px;
 }
 
 .each_filter {
