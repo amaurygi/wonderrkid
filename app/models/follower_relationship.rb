@@ -1,7 +1,7 @@
 class FollowerRelationship < ApplicationRecord
   belongs_to :user
   belongs_to :followed_user, class_name: 'User'
-  has_one :chatroom
+  has_one :chatroom, dependent: :destroy
 
   validates :user_id, uniqueness: { scope: :followed_user_id }
   validates :followed_user_id, uniqueness: { scope: :user_id }
