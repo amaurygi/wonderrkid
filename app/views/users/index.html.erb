@@ -96,7 +96,7 @@
                 <i class="fas fa-birthday-cake"></i> <%= user.age %> years old
                 </p>
               </div>
-              <p><%= user.description%></p>
+              <p><%= user.description.first(120) %></p>
             </div>
 
               <p><% if user == current_user %>
