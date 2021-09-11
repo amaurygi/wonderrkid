@@ -154,7 +154,7 @@
   <% if @user.profile_video.attached? %>
     <%= cl_video_tag(@user.profile_video.key, controls: true, :loop => true, :controls => true,
     :transformation => [
-      :height=>360, :width=>480, :crop=>"pad",
+      :height=>400, :width=>600, :crop=>"pad",
       :quality=>70, :duration=>"10"],
     :fallback_content => "Your browser does not support HTML5 video tags.") %>
   <% end %>
@@ -167,14 +167,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <div class="slideshow-container">
-
     <% @user.photos.each do |photo| %>
       <div class="mySlides">
-        <div class="numbertext">Test comment</div>
+        <div class="numbertext"></div>
           <%= cl_image_tag photo.key, crop: :fill, class: "slide" %>
         <div class="image-text"></div>
       </div>
-   <% end %>
+    <% end %>
 
 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
 <a class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -185,7 +184,11 @@
 <div style="text-align:center">
   <span class="dot" onclick="currentSlide(1)"></span> 
   <span class="dot" onclick="currentSlide(2)"></span> 
-  <span class="dot" onclick="currentSlide(3)"></span> 
+  <span class="dot" onclick="currentSlide(3)"></span>
+  <span class="dot" onclick="currentSlide(4)"></span> 
+  <span class="dot" onclick="currentSlide(5)"></span> 
+  <span class="dot" onclick="currentSlide(6)"></span> 
+  <span class="dot" onclick="currentSlide(7)"></span>  
 </div>
 
 <script>
