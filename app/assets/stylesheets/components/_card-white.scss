@@ -1,10 +1,35 @@
 .card-white {
   background-color: white;
   padding: 20px;
-  margin: 20px auto;
+  margin: 20px;
+  width: 350px;
   box-shadow: 0 10px 15px rgba(0,0,0,0.1);
   border-radius: 4px; 
 }
+
+.btn-primary-round {
+  color: white;
+  background-color: #2871AA;
+  border-color: #2871AA;
+  border-radius: 50px;
+}
+
+.btn-primary-round:hover {
+  background-color: white;
+  border-color: #2871AA;
+  color: 2871AA;
+}
+
+.card-white:hover {
+  transform: translateY(-5px) scale(1.005) translateZ(0);
+  box-shadow: 0 24px 36px rgba(0,0,0,0.11),
+    0 24px 46px var(--box-shadow-color);
+  
+  border-color: #2871AA;
+  h3 {
+    color: #2871AA;
+  }
+} 
 
 #profile-data {
   height: 100vh;
@@ -21,7 +46,7 @@
   justify-content: space-between;
 } 
 
-.photo-cards {
+.relation-cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 4px;
