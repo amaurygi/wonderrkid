@@ -1,42 +1,53 @@
-<br>
-<br>
-<br>
 
-<h1>Relationships</h1>
+
+<br>
+<h1>Relations</h1>
   <% unless @connections.empty? %>
   <% @connections.each do |fr| %>
       <% if fr.follower_relationship.followed_user != current_user %>
-        <ul>
-        <div class="card mt4-p3">
+        <div class="relation-cards">
+        <div class="card-white">
+        <%= link_to user_path(fr.follower_relationship.followed_user) do %>
+          <div class="d-flex justify-content-between align-items-center mb-4">
           <h3>
             <%= fr.follower_relationship.followed_user.first_name %>
             <%= fr.follower_relationship.followed_user.last_name %> 
+          </h3>
             <% if fr.follower_relationship.followed_user.avatar.attached? %>
                 <%= cl_image_tag fr.follower_relationship.followed_user.avatar.key, height: 100, width: 100, class: "avatar-profile" %>
             <% end %>
-          </h3>
-            <p>is followed by you</p>
-            <%= link_to "Chatroom", chatroom_path(fr), class: 'btn btn-secondary' %>
+          </div>
+          <% end %>
+            <div class="d-flex justify-content-between align-items-center">
+              <p>Is followed by you</p>
+              <%= link_to "Chatroom", chatroom_path(fr), class: 'btn btn-primary-round' %>
+            </div>  
         </div>
-        </ul>
+        </div>
         <% elsif fr.follower_relationship.user != current_user %>
-        <ul>
-        <div class="card mt4-p3">
+        <div class="relation-cards">
+        <div class="card-white">
+        <%= link_to user_path(fr.follower_relationship.user) do %>
+          <div class="d-flex justify-content-between align-items-center mb-4">
           <h3>
             <%= fr.follower_relationship.user.first_name %>
             <%= fr.follower_relationship.user.last_name %> 
+          </h3>
             <% if fr.follower_relationship.user.avatar.attached? %>
                 <%= cl_image_tag fr.follower_relationship.user.avatar.key, height: 100, width: 100, class: "avatar-profile" %>
             <% end %>
-          </h3>
-          <p>Is following you</p>
-            <%= link_to "Chatroom", chatroom_path(fr), class: 'btn btn-secondary' %>
+          </div>
+          <% end %>
+            <div class="d-flex justify-content-between align-items-center">
+              <p>Is following you</p>
+              <%= link_to "Chatroom", chatroom_path(fr), class: 'btn btn-primary-round' %>
+            </div>  
         </div>
-        </ul>
+        </div>
         <% end %>
   <% end %>
   <% else %>
-    <p>You have no relation. Try to be more frindly!</p>
+    <p>You have no relation. Try to be more friendly!</p>
 <% end %>
   
  
