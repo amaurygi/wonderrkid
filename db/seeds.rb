@@ -102,20 +102,39 @@ user = User.new(
 user.avatar.attach(io: file, filename: 'jorge.jpg', content_type: 'image/jpg')
 user.save!
 
-User.take(3).each do |user|
-  pictures.each do |picture|
+
+50.times do
+    file = URI.open('https://res.cloudinary.com/dzc11fywj/image/upload/v1631214233/t%C3%A9l%C3%A9chargement_qcsrcw.jpg')
+  user = User.new(
+    email: Faker::Internet.email, 
+    password: '123456', 
+    first_name: Faker::Name.first_name, 
+    last_name: Faker::Name.last_name,
+    role: "Athlete",
+    sport: "Football",
+    position: Faker::Sports::Football.position,
+    gender: ['Male', 'Female'].sample,
+    footedness: ['Right', 'Left'].sample,
+    weight: rand(45..120),
+    height: rand(120..200),
+    description: Faker::Quote.yoda,
+    nationality: Faker::Nation.nationality,
+    city: Faker::Nation.capital_city,
+    age: rand(14..30)
+  )
+  user.avatar.attach(io: file, filename: 'ivo.jpg', content_type: 'image/jpg')
+  user.save!
+end
+
+User.all.each do |user|
+  pictures.sample(3).each do |picture|
     file = URI.open(picture)
     user.photos.attach(io: file, filename: "photo #{pictures[10..13]}", content_type: 'image/jpg')
     user.save!
   end
 end
 
-=begin
-User.take(2).each do |user|
-  p user
-  2.times { |_| user.follower_relationships.create(followed_user_id: User.where.not(id: user.id).sample) }
-end
-=end
+
 connection = FollowerRelationship.new(user: User.first, followed_user: User.last)
 chatroom = Chatroom.create
 connection.chatroom = chatroom

@@ -1,7 +1,3 @@
-<% content_for :meta_title, "#{@user.first_name} #{@user.last_name} is on #{DEFAULT_META["meta_product_name"]}" %>
-<% content_for :meta_description, @user.description %>
-<% content_for :meta_image, cl_image_path(@user.photos.first) %>
-
 <!-- Breadcrumb -->
 <nav aria-label="breadcrumb" class="main-breadcrumb">
   <ol class="breadcrumb">
@@ -195,6 +191,9 @@
   <span class="dot" onclick="currentSlide(7)"></span>  
 </div>
 
+<% end %>
+
+<% unless !@user.photos.attached? %>
 <script>
 var slideIndex = 1;
 showSlides(slideIndex);
@@ -225,4 +224,3 @@ function showSlides(n) {
 </script>
 
 <% end %>
-
