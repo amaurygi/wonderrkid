@@ -31,6 +31,8 @@
     <p class="alert"><%= alert %></p>
   </body>
   <footer>
+  <% unless controller_name == "chatrooms" %>
     <%= render 'shared/footer' %>
+    <% end %>
   </footer>
 </html>
