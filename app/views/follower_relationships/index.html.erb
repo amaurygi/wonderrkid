@@ -2,6 +2,7 @@
 
 <br>
 <h1>Relations</h1>
+<div class="relation-cards">
   <% unless @connections.empty? %>
   <% @connections.each do |fr| %>
       <% if fr.follower_relationship.followed_user != current_user %>
@@ -49,5 +50,6 @@
   <% else %>
     <p>You have no relation. Try to be more friendly!</p>
 <% end %>
+</div>
   
  

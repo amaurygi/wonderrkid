@@ -5,13 +5,12 @@
     <% chatter = @chatroom.follower_relationship.followed_user.first_name %>
   <% end %>
 
-<div class="main-container">
+<div class="general-container">
 
-  <div class="col-9">
-    <div class="chat-room">
-      <h2>Hi <%= current_user.first_name %></h2>
-      <h1>This is you Chatroom with <%= chatter %></h1>
-
+  <div class="chat-room col-9">
+  <br>
+      <h1>Chat with <%= chatter %></h1>
+      <br>
           <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
             <% @chatroom.messages.each do |message| %>
               <div class="message mb-2 <%= 'me' if message.user == current_user %>">
@@ -28,28 +27,30 @@
               <br>
             <% end %>
         <br>
+      </div>
+    
         <div class="chat-box">
             <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
             <%= f.input :content, label: false, placeholder: "New message to #{chatter}" %>
           <% end %>
         </div>
-      </div>
-    </div>
   </div>
 
     <div class='flex-container'>
-      <% Chatroom.where(follower_relationship_id: FollowerRelationship.where(user_id: current_user.id)).each do |cr|%>
-        <% fu = cr.follower_relationship.followed_user %>
-        <% fo = cr.follower_relationship.user %>
-          <% if fu == current_user %>
-            <% relation = fo %>
-          <% else %>
-            <% relation = fu %>
+    <h4>Chatrooms</h4>
+      <% Chatroom.participating(current_user).each do |cr|%>
+        <% followed = cr.follower_relationship.followed_user %>
+        <% following = cr.follower_relationship.user %>
+          <% if followed == current_user %>
+            <% relation = following %>
+          <% elsif following == current_user%>
+            <% relation = followed %>
           <% end %>
-          <div class="pastille">
-          <%= link_to chatroom_path(cr) do %>
-            <% cl_image_tag(relation.avatar.key, height: 120, width: 120, crop: "fill", gravity: "faces", class: "avatar-profile")%>
-          <% end %>
+          <div class="pastille text-center">
+            <%= link_to chatroom_path(cr) do %>
+              <%= cl_image_tag(relation.avatar.key, height: 120, width: 120, crop: "fill", gravity: "faces", class: "avatar-profile")%>
+              <p><%= relation.first_name %> <%= relation.last_name %></p>
+            <% end %>
           </div>
       <% end %>
     </div>
