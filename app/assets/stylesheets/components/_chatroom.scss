@@ -1,12 +1,15 @@
 
-.main-container {
+.general-container {
   display: flex;
-  overflow-y: hidden;
-
+  h1 {
+    color: #2871AA;
+    font-weight: 800;
   }
-  .chat-room {
-    height: 100vh;
-
+}
+.chat-room {
+  height: 100vh;
+  overflow-y: auto;
+    
     .message {
       min-height: 59px;
       .content-container {
@@ -52,8 +55,23 @@
     margin: 0 auto;
     position: sticky;
     top: 0;
-      .pastille {
-        margin: 30px;  
+    h4 {
+      text-align: center;
+      color: #2871AA;
+      font-weight: 400;
     }
+      .pastille {
+        margin-top: 15px; 
+        flex-direction: column;
+        p {
+          text-decoration: none;
+          text-align: center;
+          color: #2871AA;
+        }
+      }
+      .pastille a img:hover {
+        height: 130px;
+        width: 130px;
+      }
   }
     
