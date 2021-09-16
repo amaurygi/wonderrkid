@@ -2,13 +2,14 @@
     // flex: 1 1 auto;
     min-height: 1px;
     width: 260px;
-    widows: 260px;
+    height: 500px;
+    // widows: 260px;
     padding: 1rem;
     background-color: #fff;
     margin: 10px;
-    position: sticky;
+    position: sticky !important;
     // z-index: 1;
-    top: 70px;
+    top: 70px !important;
 }
 
 .each_filter {
