@@ -23,6 +23,15 @@ pictures = [
   'https://www.abcmoney.co.uk/wp-content/uploads/2017/11/football.jpg'
 ]
 
+quote = [
+  "Hi, I'm a football player looking for an academy where I can improve my skills, and hopefully sign a contract in one of the big european leagues.",
+  "I'm a hard worker, with an incredible passion for football. I pay attention to my nutrition and my resting habits as well. My dream is to play in the premier league.",
+  "I currently play for a good second tier team, but I'd love to move up to the big leagues. My dream is to represent my country at the world cup.",
+  "I am young athlete dreaming to become professional football player and make career as my idol Cristiano Ronaldo. I can shoot with both my legs and am very fast. Check it on my highlights. :)",
+  "Hi there! Please check out my videos, and let me know what do you think about my skills. I am looking for academy, so feel free to contact me if you find my profile interesting.",
+  "I am member of local academy but would like to take my career on the next level. I train so hard to win Champions League one day, hopefully with AS Roma."  
+]
+
 file = URI.open('https://www.usyouthsoccer.org/assets/1/6/f-17-65-6653354_Andrea1.jpg')
 user = User.new(
   email: 'michel@mail.com', 
@@ -36,7 +45,7 @@ user = User.new(
   footedness: ['Left'].sample,
   weight: 70,
   height: 177,
-  description: Faker::Quote.yoda,
+  description: quote.sample,
   nationality: "Belgium",
   city: "Uccle",
   age: "52"
@@ -57,7 +66,7 @@ user = User.new(
   footedness: ['Right'].sample,
   weight: 69,
   height: 172,
-  description: Faker::Quote.yoda,
+  description: quote.sample,
   nationality: "Belgium",
   city: "Waterloo",
   age: "30"
@@ -73,15 +82,15 @@ user = User.new(
   last_name:"Rasovic",
   role: "Athlete",
   sport: "Football",
-  position: Faker::Sports::Football.position,
+  position: "Striker",
   gender: ['Male'].sample,
   footedness: ['Right'].sample,
-  weight: rand(50..100),
-  height: rand(120..200),
-  description: Faker::Quote.yoda,
+  weight: 66,
+  height: 170,
+  description: "Hello everyone! I am 18-years old striker coming from Montenegro. My dream is to play at Olimpico alongside Francesco Totti one day. I really train hard for that. In the free time I like coding in Ruby. :)",
   nationality: "Montenegro",
   city: "Podgorica",
-  age: "29"
+  age: "18"
 )
 user.avatar.attach(io: file, filename: 'ivo.jpg', content_type: 'image/jpg')
 user.save!
@@ -94,7 +103,7 @@ user = User.new(
   last_name:"Mendes",
   role: "Scout",
   sport: "Football",
-  position: Faker::Sports::Football.position,
+  position: quote.sample,
   nationality: "Portugal",
   city: "Lisbon",
   age: "55"
@@ -117,7 +126,7 @@ user.save!
     footedness: ['Right', 'Left'].sample,
     weight: rand(45..120),
     height: rand(120..200),
-    description: Faker::Quote.yoda,
+    description: quote.sample,
     nationality: Faker::Nation.nationality,
     city: Faker::Nation.capital_city,
     age: rand(14..30)
