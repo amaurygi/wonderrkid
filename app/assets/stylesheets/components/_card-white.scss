@@ -26,8 +26,11 @@
     0 24px 46px var(--box-shadow-color);
   
   border-color: #2871AA;
+  a {
+    text-decoration: none;
+  }
   h3 {
-    color: #2871AA;
+    font-weight: 600;
   }
 } 
 
