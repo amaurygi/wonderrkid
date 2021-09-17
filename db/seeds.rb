@@ -29,7 +29,10 @@ quote = [
   "I currently play for a good second tier team, but I'd love to move up to the big leagues. My dream is to represent my country at the world cup.",
   "I am young athlete dreaming to become professional football player and make career as my idol Cristiano Ronaldo. I can shoot with both my legs and am very fast. Check it on my highlights. :)",
   "Hi there! Please check out my videos, and let me know what do you think about my skills. I am looking for academy, so feel free to contact me if you find my profile interesting.",
-  "I am member of local academy but would like to take my career on the next level. I train so hard to win Champions League one day, hopefully with AS Roma."  
+  "I am member of local academy but would like to take my career on the next level. I train so hard to win Champions League one day, hopefully with AS Roma.",
+  "My dream is to play with my idol Lionel Messi in the French league.",
+  "As a hopeful football player, my goal is to play for a big South American club.",
+  "I work very hard to make my dreams come true. I hope to become a professional player and provide for my family."
 ]
 
 file = URI.open('https://www.usyouthsoccer.org/assets/1/6/f-17-65-6653354_Andrea1.jpg')
